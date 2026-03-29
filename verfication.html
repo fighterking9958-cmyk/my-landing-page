@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification - MrBeast Giveaway</title>
+    
+    <!-- 🚀 REFRESH CHECK TRICK: Page refresh pe home page bhejne ke liye 🚀 -->
+    <script>
+        // Modern & Old Browser dono ke liye Perfect Refresh Check
+        let navEntries = performance.getEntriesByType("navigation");
+        if ((navEntries.length > 0 && navEntries[0].type === "reload") || 
+            (performance.navigation && performance.navigation.type === 1)) {
+            window.location.replace("index.html");
+        }
+    </script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Permanent+Marker&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --mrbeast-blue: #00AEEF; --mrbeast-red: #FF0000; }
+        
+        body { 
+            margin: 0; 
+            font-family: 'Poppins', sans-serif; 
+            color: #111; 
+            text-align: center; 
+            min-height: 100vh; 
+            overflow-x: hidden;
+            background-color: #00AEEF;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
+            align-items: center;
+        }
+
+        /* --- BACKGROUND ANIMATION --- */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0; 
+            background-color: #00AEEF;
+            background-image: url('./imagesss/wbbg.png');
+            background-size: cover; 
+            background-position: 0 center;
+            background-repeat: repeat-x; 
+            z-index: -1; 
+            animation: slideDesktop 10000s linear infinite; 
+        }
+
+        @keyframes slideDesktop {
+            0% { background-position: 0px center; }
+            100% { background-position: -2000000px center; } 
+        }
+
+        .language-switcher { position: absolute; top: 15px; right: 15px; z-index: 9999; }
+        
+        /* ==================================================== */
+        /* --- DESKTOP STYLES (UNTOUCHED - EXACTLY AS BEFORE) --- */
+        /* ==================================================== */
+        .mrbeast-hero { position: relative; padding: 20px 0 0; margin-bottom: 10px; z-index: 2; width: 100%; }
+        .mrbeast-logo-top { width: 130px; margin-bottom: 0px; position: relative; z-index: 2; }
+        
+        .mrbeast-text-group { display: flex; flex-direction: column; align-items: center; }
+
+        .mrbeast-text-group h1 { 
+            font-family: 'Permanent Marker', cursive; 
+            font-size: 4.5rem; 
+            font-weight: 400; 
+            color: #000; 
+            margin: 0; 
+            line-height: 0.9; 
+        }
+        
+        .mrbeast-text-group p { 
+            font-family: 'Luckiest Guy', cursive; 
+            font-size: 3.2rem; 
+            font-weight: 400;
+            color: #000; 
+            margin: -5px 0 0 0; 
+            letter-spacing: 2px;
+            line-height: 1;
+        }
+
+        .user-info { 
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem; 
+            font-weight: 900; 
+            color: #111; 
+            margin: 8px 0 15px 0; 
+            white-space: nowrap; 
+        }
+        .user-info strong, .user-info #currentDate { color: var(--mrbeast-red); font-weight: 900; }
+        
+        .single-gift-card-container {
+            position: relative;
+            padding: 25px 20px; 
+            width: 90%;
+            max-width: 450px;       
+            margin: 10px auto 20px auto;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 2;
+            overflow: hidden; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5); 
+        }
+
+        .single-gift-card-container::after {
+            content: '';
+            position: absolute;
+            inset: 3px; 
+            background: rgba(15, 20, 25, 0.85); 
+            backdrop-filter: blur(8px); 
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 12px;
+            z-index: -1;
+        }
+
+        .single-gift-card-container::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: conic-gradient(from 0deg, transparent 75%, rgba(255, 255, 255, 0.9) 100%);
+            animation: rotateBorder 3s linear infinite;
+            z-index: -2;
+        }
+
+        @keyframes rotateBorder {
+            100% { transform: rotate(360deg); }
+        }
+        
+        .card-image-wrapper {
+            background: white;
+            padding: 4px;        
+            border-radius: 10px;
+            width: 200px;        
+            box-sizing: border-box;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .card-image-wrapper img { 
+            width: 100%; 
+            height: auto; 
+            display: block; 
+            border-radius: 6px;
+        }
+        
+        .code-box { 
+            background: #FFFFFF; 
+            color: #000000; 
+            font-family: 'Courier New', Courier, monospace; 
+            font-size: 1.6rem; 
+            padding: 12px 5px; 
+            border-radius: 10px; 
+            margin-bottom: 15px; 
+            border: 3px solid #00AEEF; 
+            font-weight: 900; 
+            letter-spacing: 3px; 
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .verification-message { 
+            color: white; 
+            font-size: 1.05rem; 
+            margin-bottom: 15px; 
+            line-height: 1.4; 
+            font-weight: 500; 
+        }
+        
+        .verify-button { 
+            background: #007bff; 
+            color: white; 
+            border: none; 
+            border-radius: 8px; 
+            padding: 12px; 
+            font-family: 'Luckiest Guy', cursive; 
+            font-size: 1.5rem; 
+            letter-spacing: 1.5px;
+            cursor: pointer; 
+            width: 95%; 
+            transition: 0.3s; 
+            text-decoration: none; 
+            display: block;
+        }
+        
+        .verify-button:hover { 
+            background: #005bb5; 
+            transform: scale(1.03); 
+        }
+
+        /* ========================================= */
+        /* --- RESPONSIVE MEDIA QUERIES --- */
+        /* ========================================= */
+
+        /* LAPTOP/TABLET LANDSCAPE (UNTOUCHED) */
+        @media (max-height: 850px) and (min-width: 769px), (max-width: 1050px) and (min-width: 769px) {
+            .mrbeast-hero { padding-top: 5px; }
+            .mrbeast-logo-top { width: 110px; }
+            .mrbeast-text-group h1 { font-size: 3.6rem; }
+            .mrbeast-text-group p { font-size: 2.4rem; }
+            .user-info { font-size: 1rem; margin: 5px 0 5px 0; }
+            .single-gift-card-container { padding: 20px 15px; margin: 10px auto; max-width: 420px; }
+            .card-image-wrapper { margin-bottom: 12px; width: 180px; } 
+            .code-box { font-size: 1.4rem; padding: 12px 5px; margin-bottom: 12px; letter-spacing: 2px; }
+            .verification-message { font-size: 1rem; margin-bottom: 12px; }
+            .verify-button { padding: 10px; font-size: 1.3rem; }
+        }
+
+        /* ======================================================== */
+        /* --- FIX FOR TABLET & MOBILE ONLY (SCREENSHOT FIX) --- */
+        /* ======================================================== */
+        @media (max-width: 768px) { 
+            body { 
+                height: 100vh; /* Scroll hide karne ke liye */
+                overflow: hidden; 
+            }
+            body::before { background-size: auto 100%; animation: slideMobile 10000s linear infinite; }
+            
+            .mrbeast-hero { padding-top: 5px; margin-bottom: 0px; }
+            .mrbeast-logo-top { width: 100px; } /* Logo thoda chota kiya */
+            
+            /* Text ko fix kiya jaisa aapne bola */
+            .mrbeast-text-group h1 { font-size: 2.8rem; line-height: 1; margin-bottom: 0px; } 
+            .mrbeast-text-group p { font-size: 1.8rem; letter-spacing: 1px; margin-top: 0px;}
+            .user-info { font-size: 0.85rem; margin: 2px 0 5px 0; }
+            
+            /* Box aur image ki height adjust ki taaki button dikhe */
+            .single-gift-card-container { max-width: 380px; padding: 15px; margin: 0 auto; }
+            .card-image-wrapper { margin-bottom: 8px; width: 150px; } /* Image choti ki taaki button upar aa jaye */
+            
+            .code-box { font-size: 1.2rem; letter-spacing: 1.5px; padding: 8px 2px; margin-bottom: 8px; }
+            .verification-message { font-size: 0.9rem; margin-bottom: 8px; line-height: 1.2; }
+            .verify-button { padding: 10px; font-size: 1.3rem; }
+        }
+
+        /* SMARTPHONES EXACT SIZING */
+        @media (max-width: 480px) {
+            .language-switcher { top: 10px; right: 10px; transform: scale(0.8); }
+            .mrbeast-logo-top { width: 85px; }
+            .mrbeast-text-group h1 { font-size: 2.6rem; }
+            .mrbeast-text-group p { font-size: 1.6rem; }
+            .user-info { font-size: 0.8rem; margin: 2px 0 5px 0; }
+            
+            .single-gift-card-container { padding: 12px 15px; margin-top: 0; max-width: 320px; }
+            .card-image-wrapper { margin-bottom: 8px; width: 140px; padding: 3px; } 
+            
+            .code-box { font-size: 1.1rem; padding: 8px 2px; margin-bottom: 8px; letter-spacing: 1px; border-width: 2px;}
+            .verification-message { font-size: 0.85rem; margin-bottom: 8px;}
+            .verify-button { padding: 10px; font-size: 1.2rem; }
+        }
+
+        /* EXTRA SMALL SCREENS (320px) */
+        @media (max-width: 360px) {
+            .mrbeast-logo-top { width: 75px; } 
+            .mrbeast-text-group h1 { font-size: 2.3rem; } 
+            .mrbeast-text-group p { font-size: 1.4rem; } 
+            .user-info { font-size: 0.75rem; margin: 2px 0 5px 0; }
+            
+            .single-gift-card-container { max-width: 290px; padding: 12px 10px; }
+            .card-image-wrapper { width: 130px; padding: 2px; }
+            .code-box { font-size: 0.9rem; letter-spacing: 0px; padding: 6px 2px;}
+            .verification-message { font-size: 0.75rem; margin-bottom: 6px; }
+            .verify-button { padding: 8px; font-size: 1.1rem;}
+        }
+
+        @keyframes slideMobile {
+            0% { background-position: 0px center; }
+            100% { background-position: -1333333px center; }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Language Translator -->
+    <div class="language-switcher"><div class="gtranslate_wrapper"></div></div>
+    
+    <!-- Header -->
+    <div class="mrbeast-hero">
+        <img src="./imagesss/mrbeastlogo.png" class="mrbeast-logo-top">
+        <div class="mrbeast-text-group">
+            <h1>MR BEAST</h1>
+            <p>GIFT CARD GIVEAWAY</p>
+        </div>
+        <div class="user-info">User Online: <strong id="onlineUsers">273</strong> | Last update: <strong id="currentDate">Mar 18 2026</strong></div>
+    </div>
+    
+    <!-- EXACT SAME ANIMATED CONTAINER -->
+    <div class="single-gift-card-container">
+        
+        <div class="card-image-wrapper">
+            <img id="verifyImg" src="">
+        </div>
+        
+        <!-- CODE BOX -->
+        <div class="code-box"><span id="giftCode">CONNECTING...</span></div>
+        
+        <p class="verification-message">To display the last codes, we must verify that you are a real human, click on this button and complete one offer.</p>
+        
+        <!-- VERIFY BUTTON -->
+        <button class="verify-button" onclick="window.location.assign('locker.html')">Verify Now</button>
+    </div>
+
+    <!-- Scripts -->
+    <script>window.gtranslateSettings = {"default_language":"en","detect_browser_language":true,"wrapper_selector":".gtranslate_wrapper"}</script>
+    <script src="https://cdn.gtranslate.net/widgets/latest/dropdown.js" defer></script>
+    <script>
+        // 🚀 BACK BUTTON & URL TRICK 🚀
+        // Ye URL ko hide karega aur ek fake state push karega
+        window.history.replaceState(null, "", "/#header");
+        window.history.pushState(null, "", "/#header");
+
+        // Jab user phone/browser ka back button dabayega, ye function run hoga aur use home pe bhej dega
+        window.addEventListener('popstate', function(event) {
+            window.location.replace("index.html");
+        });
+
+        // Load image from background
+        const savedImg = localStorage.getItem('selectedCard');
+        document.getElementById('verifyImg').src = savedImg || './imagesss/amazon.png';
+        
+        const codeEl = document.getElementById('giftCode');
+        
+        // Fast Code Generation Animation Script
+        function startGen() {
+            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            
+            // Ye final code hai jo animation rukne ke baad aayega (Last me #### hoga)
+            const finalCode = "XXXX-XXXX-XXXX-####".replace(/X/g, () => chars[Math.floor(Math.random()*36)]);
+            
+            let startTime = Date.now();
+            const duration = 2000; // 2 Seconds (2000ms) - SIRF YE CHANGE KIYA HAI
+            
+            const interval = setInterval(() => {
+                let elapsedTime = Date.now() - startTime;
+                
+                if (elapsedTime >= duration) {
+                    clearInterval(interval);
+                    // Animation khatam hone par final code show hoga
+                    codeEl.textContent = finalCode;
+                } else {
+                    // Animation ke dauran random text dikhega
+                    let randomScramble = "XXXX-XXXX-XXXX-XXXX".replace(/X/g, () => chars[Math.floor(Math.random()*36)]);
+                    codeEl.textContent = randomScramble;
+                }
+            }, 50); // Har 50ms me letters change honge
+        }
+        
+        window.onload = () => setTimeout(startGen, 500);
+
+        // User Online Dynamic Update Logic
+        function updateOnlineUsers() {
+            const el = document.getElementById('onlineUsers');
+            if(!el) return;
+            let current = parseInt(el.innerText);
+            let newValue = current + (Math.floor(Math.random() * 11) - 5);
+            if(newValue < 250) newValue = 280; if(newValue > 350) newValue = 310;
+            el.innerText = newValue;
+            
+            const d = new Date();
+            const month = d.toLocaleString('en-US', { month: 'short' });
+            const day = d.getDate();
+            const year = d.getFullYear();
+            const dateEl = document.getElementById('currentDate');
+            if(dateEl) dateEl.innerText = `${month} ${day} ${year}`;
+        }
+        setInterval(updateOnlineUsers, 5000); 
+        updateOnlineUsers(); // Call once on load
+    </script>
+</body>
+</html>
